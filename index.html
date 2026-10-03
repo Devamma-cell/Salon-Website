@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luna Salon | Beauty & Style</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top salon-nav">
+  <div class="container">
+    <a class="navbar-brand brand" href="#home">LUNA<span>.</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li><li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li><li class="nav-item"><a class="nav-link" href="#stylists">Stylists</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li><li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#offers">Offers</a></li><li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item"><button class="btn btn-outline-dark rounded-pill px-4 ms-lg-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button></li>
+        <li class="nav-item"><button class="btn btn-outline-dark rounded-pill px-4" id="dashboardNavBtn" onclick="openUserDashboard()" hidden>My dashboard</button></li>
+        <li class="nav-item"><button class="btn btn-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#bookingModal">Book now</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="home" class="hero">
+  <div class="container hero-content">
+    <p class="eyebrow">YOUR MOMENT. YOUR GLOW.</p>
+    <h1>Beauty begins<br>with <em>you.</em></h1>
+    <p class="hero-copy">Thoughtful styling, expert care, and a little time just for yourself.</p>
+    <a href="#services" class="btn btn-dark rounded-pill px-4 py-3 me-2">Explore services</a>
+    <button class="btn btn-outline-dark rounded-pill px-4 py-3" data-bs-toggle="modal" data-bs-target="#bookingModal">Book an appointment</button>
+  </div>
+</header>
+
+<section id="about" class="section-pad">
+  <div class="container"><div class="row align-items-center g-5">
+    <div class="col-lg-6"><div class="about-photo"></div></div>
+    <div class="col-lg-6"><p class="eyebrow">A LITTLE ABOUT US</p><h2 class="section-title">A salon that feels<br><em>like your own.</em></h2>
+      <p class="muted">At Luna, beauty is personal. Our friendly team blends modern techniques with thoughtful care to help you look and feel your best.</p>
+      <p class="muted">From a fresh cut to a full-day refresh, settle in, unwind, and let us take care of the details.</p>
+      <a href="#stylists" class="text-link">Meet our stylists ↗</a></div>
+  </div></div>
+</section>
+
+<section id="services" class="section-pad soft-bg">
+ <div class="container"><div class="text-center section-heading"><p class="eyebrow">WHAT WE DO</p><h2 class="section-title">Services made <em>for you</em></h2><p class="muted">A little refresh or a whole new look—we've got you.</p></div>
+  <div class="row g-4" id="serviceCards"></div>
+ </div>
+</section>
+
+<section id="stylists" class="section-pad">
+ <div class="container"><div class="text-center section-heading"><p class="eyebrow">THE PEOPLE BEHIND THE MAGIC</p><h2 class="section-title">Meet your <em>stylists</em></h2></div>
+  <div class="row g-4" id="stylistCards"></div>
+ </div>
+</section>
+
+<section id="pricing" class="section-pad soft-bg">
+ <div class="container"><div class="text-center section-heading"><p class="eyebrow">SIMPLE, TRANSPARENT</p><h2 class="section-title">Our <em>pricing</em></h2><p class="muted">Starting prices. Final pricing may vary by hair length and service needs.</p></div>
+  <div class="row g-4" id="priceCards"></div>
+ </div>
+</section>
+
+<section id="gallery" class="section-pad">
+ <div class="container"><div class="text-center section-heading"><p class="eyebrow">A LITTLE INSPIRATION</p><h2 class="section-title">The <em>lookbook</em></h2></div>
+  <div class="gallery-grid">
+    <div class="gallery-item g1"><span>Soft layers</span></div><div class="gallery-item g2"><span>Golden glow</span></div><div class="gallery-item g3"><span>Fresh finish</span></div><div class="gallery-item g4"><span>Modern classics</span></div><div class="gallery-item g5"><span>Color stories</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="offers" class="section-pad offer-section">
+ <div class="container"><div class="row align-items-center g-4"><div class="col-lg-7"><p class="eyebrow">A LITTLE SOMETHING EXTRA</p><h2 class="section-title">Good hair days,<br><em>with a little perk.</em></h2><p class="muted">Explore our current salon offers and membership benefits.</p></div><div class="col-lg-5"><div class="offer-card"><span class="badge text-bg-dark mb-3">WELCOME OFFER</span><h3>15% off your first visit</h3><p class="muted">New to Luna? Enjoy 15% off one eligible service.</p><button class="btn btn-dark rounded-pill px-4" onclick="applyOffer()">Apply offer</button><small id="offerNotice" class="d-block mt-3"></small></div></div></div></div>
+</section>
+
+<section id="membership" class="section-pad">
+ <div class="container"><div class="membership-box"><div><p class="eyebrow">LUNA CIRCLE</p><h2 class="section-title">Your beauty routine,<br><em>with benefits.</em></h2><p class="muted mb-0">Join our demo membership to keep track of visits, enjoy member perks, and make self-care a habit.</p></div><div class="text-lg-end"><h3 class="price-large">₹999 <small>/ month</small></h3><p class="muted">Sample plan · frontend demo</p><button class="btn btn-dark rounded-pill px-4" onclick="joinMembership()">Join membership</button><p id="memberNotice" class="small mt-3 mb-0"></p></div></div></div>
+</section>
+
+<section id="testimonials" class="section-pad soft-bg">
+ <div class="container"><div class="text-center section-heading"><p class="eyebrow">KIND WORDS</p><h2 class="section-title">Love notes from <em>clients</em></h2></div>
+  <div class="row g-4" id="reviewCards"></div>
+  <div class="review-form mt-5"><h3 class="serif mb-3">Leave a review</h3><form id="reviewForm" class="row g-3"><div class="col-md-4"><input class="form-control" id="reviewName" placeholder="Your name" required></div><div class="col-md-3"><select class="form-select" id="reviewRating"><option value="5">★★★★★ — Loved it</option><option value="4">★★★★☆ — Great</option><option value="3">★★★☆☆ — Good</option><option value="2">★★☆☆☆ — Fair</option><option value="1">★☆☆☆☆ — Poor</option></select></div><div class="col-md-5"><input class="form-control" id="reviewText" placeholder="Share your experience" required></div><div class="col-12"><button class="btn btn-dark rounded-pill px-4">Submit review</button></div></form></div>
+ </div>
+</section>
+
+<section id="contact" class="section-pad">
+ <div class="container"><div class="row g-5"><div class="col-lg-5"><p class="eyebrow">COME SAY HELLO</p><h2 class="section-title">Let's make<br><em>you feel amazing.</em></h2><p class="muted">12 Rose Avenue, Bengaluru, Karnataka</p><p class="muted">+91 98765 43210<br>hello@lunasalon.example</p><p class="muted">Tue–Sun · 10:00 AM – 8:00 PM</p></div><div class="col-lg-7"><form id="contactForm" class="contact-form row g-3"><div class="col-md-6"><input class="form-control" placeholder="Your name" required></div><div class="col-md-6"><input type="email" class="form-control" placeholder="Email address" required></div><div class="col-12"><input class="form-control" placeholder="Subject"></div><div class="col-12"><textarea class="form-control" rows="5" placeholder="How can we help?" required></textarea></div><div class="col-12"><button class="btn btn-dark rounded-pill px-4">Send message</button><span id="contactNotice" class="small ms-3"></span></div></form></div></div></div>
+</section>
+<footer class="footer"><div class="container d-flex flex-column flex-md-row justify-content-between gap-3"><a class="brand text-white" href="#home">LUNA<span>.</span></a><span>© <span id="year"></span> Luna Salon. Frontend demo.</span><a href="#home">Back to top ↑</a></div></footer>
+
+<!-- Appointment modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><div><p class="eyebrow mb-1">YOUR SELF-CARE TIME</p><h4 class="modal-title serif">Book an appointment</h4></div><button class="btn-close" data-bs-dismiss="modal"></button></div>
+<form id="bookingForm"><div class="modal-body"><div class="mb-3"><label class="form-label">Service</label><select class="form-select" id="bookService" required></select></div><div class="mb-3"><label class="form-label">Stylist</label><select class="form-select" id="bookStylist" required></select></div><div class="row g-3"><div class="col-6"><label class="form-label">Date</label><input class="form-control" type="date" id="bookDate" required></div><div class="col-6"><label class="form-label">Time slot</label><select class="form-select" id="bookTime" required><option value="">Choose time</option></select></div></div><div class="mt-3"><label class="form-label">Your name</label><input class="form-control" id="bookName" required></div><div class="mt-3"><label class="form-label">Phone number</label><input class="form-control" id="bookPhone" type="tel" required></div><p class="small muted mt-3 mb-0">Demo only: bookings are saved in this browser and are not sent to a salon.</p></div><div class="modal-footer"><button class="btn btn-dark rounded-pill px-4">Confirm booking</button></div></form></div></div></div>
+
+<!-- User registration / login and admin login -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+    <div class="modal-header"><h4 class="modal-title serif">Welcome to Luna</h4><button class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <ul class="nav nav-pills nav-fill mb-4" role="tablist">
+        <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#userLoginPane" type="button">User Login</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#registerPane" type="button">Register</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#adminLoginPane" type="button">Admin</button></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="userLoginPane">
+          <form id="userLoginForm">
+            <label class="form-label">Email</label><input type="email" id="userLoginEmail" class="form-control mb-3" required>
+            <label class="form-label">Password</label><input type="password" id="userLoginPassword" class="form-control mb-3" required>
+            <button class="btn btn-dark rounded-pill px-4 w-100">Login</button>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="registerPane">
+          <form id="registerForm">
+            <label class="form-label">Full name</label><input id="registerName" class="form-control mb-3" required>
+            <label class="form-label">Email</label><input type="email" id="registerEmail" class="form-control mb-3" required>
+            <label class="form-label">Phone</label><input type="tel" id="registerPhone" class="form-control mb-3" required>
+            <label class="form-label">Password</label><input type="password" id="registerPassword" class="form-control mb-3" minlength="6" required>
+            <button class="btn btn-dark rounded-pill px-4 w-100">Create account</button>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="adminLoginPane">
+          <form id="adminLoginForm">
+            <label class="form-label">Admin email</label><input type="email" id="adminEmail" class="form-control mb-3" required>
+            <label class="form-label">Password</label><input type="password" id="adminPassword" class="form-control mb-3" required>
+            <button class="btn btn-dark rounded-pill px-4 w-100">Admin login</button>
+          </form>
+          <p class="small muted mt-3 mb-0"></p>
+        </div>
+      </div>
+      <p class="small muted mt-3 mb-0">Frontend demonstration only. Do not use real passwords; credentials are stored locally in this browser.</p>
+    </div>
+  </div></div>
+</div>
+
+<!-- User dashboard -->
+<div class="modal fade" id="userDashboardModal" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div><p class="eyebrow mb-1">YOUR LUNA ACCOUNT</p><h4 class="modal-title serif">My dashboard</h4></div>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="dashboard-welcome mb-4">
+          <div><p class="eyebrow mb-1">WELCOME BACK</p><h3 class="serif mb-1" id="dashboardUserName">Hello!</h3><p class="muted mb-0" id="dashboardUserEmail"></p></div>
+          <button class="btn btn-outline-dark rounded-pill px-4" onclick="userLogout()">Log out</button>
+        </div>
+        <div class="row g-3 mb-4">
+          <div class="col-md-4"><div class="stat-box"><span>My appointments</span><strong id="userBookingCount">0</strong></div></div>
+          <div class="col-md-4"><div class="stat-box"><span>Membership status</span><strong id="userMemberStatus">Not joined</strong></div></div>
+          <div class="col-md-4"><div class="stat-box"><span>My reviews</span><strong id="userReviewCount">0</strong></div></div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+          <h5 class="serif mb-0">My appointments</h5>
+          <button class="btn btn-dark rounded-pill px-4" onclick="bookFromDashboard()">Book an appointment</button>
+        </div>
+        <div class="table-responsive mb-4">
+          <table class="table align-middle">
+            <thead><tr><th>Service</th><th>Stylist</th><th>Date</th><th>Time</th><th>Status</th><th></th></tr></thead>
+            <tbody id="userAppointmentsTable"></tbody>
+          </table>
+        </div>
+        <div class="dashboard-bottom">
+          <div><h5 class="serif">Membership</h5><p class="muted mb-2">Join the Luna Circle to keep track of your membership perks.</p><button class="btn btn-outline-dark rounded-pill px-4" onclick="joinMembershipFromDashboard()">Join / view membership</button></div>
+          <div><h5 class="serif">Account details</h5><p class="muted mb-1" id="dashboardPhone"></p><p class="small muted mb-0">To update account details, connect this interface to a secure backend.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Admin panel -->
+<div class="modal fade" id="adminModal" tabindex="-1"><div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h4 class="modal-title serif">Admin dashboard <span class="badge text-bg-dark">Demo</span></h4><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="row g-3 mb-4"><div class="col-md-4"><div class="stat-box"><span>Bookings saved</span><strong id="adminBookingCount">0</strong></div></div><div class="col-md-4"><div class="stat-box"><span>Reviews</span><strong id="adminReviewCount">0</strong></div></div><div class="col-md-4"><div class="stat-box"><span>Memberships</span><strong id="adminMemberCount">0</strong></div></div></div><h5 class="serif">Appointments</h5><div class="table-responsive"><table class="table"><thead><tr><th>Name</th><th>Service</th><th>Stylist</th><th>Date</th><th>Time</th><th></th></tr></thead><tbody id="adminBookings"></tbody></table></div></div></div></div></div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="appToast" class="toast" role="alert"><div class="toast-header"><strong class="me-auto">Luna Salon</strong><button class="btn-close" data-bs-dismiss="toast"></button></div><div class="toast-body" id="toastMessage"></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<div class="modal fade" id="adminDashboardModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content admin-modal">
+
+            <!-- HEADER -->
+            <div class="modal-header admin-header">
+                <div>
+                    <h4 class="modal-title">Luna Admin Dashboard</h4>
+                    <p class="mb-0">Salon Management Panel</p>
+                </div>
+
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body p-0">
+
+                <div class="admin-layout">
+
+                    <!-- SIDEBAR -->
+                    <aside class="admin-sidebar">
+
+                        <div class="admin-profile">
+                            <div class="admin-avatar">👑</div>
+                            <h6>Administrator</h6>
+                            <small>Salon Manager</small>
+                        </div>
+
+                        <button class="admin-link active"
+                            onclick="showAdminSection('overview', this)">
+                            📊 Overview
+                        </button>
+
+                        <button class="admin-link"
+                            onclick="showAdminSection('staff', this)">
+                            👩‍💼 Staff Management
+                        </button>
+
+                        <button class="admin-link"
+                            onclick="showAdminSection('services', this)">
+                            ✂️ Services Management
+                        </button>
+
+                        <button class="admin-link"
+                            onclick="showAdminSection('appointments', this)">
+                            📅 Appointments
+                        </button>
+
+                        <button class="admin-link"
+                            onclick="showAdminSection('customers', this)">
+                            👥 Customers
+                        </button>
+
+                        <button class="admin-link"
+                            onclick="showAdminSection('offers', this)">
+                            🎁 Offers
+                        </button>
+
+                        <button class="admin-link"
+                            onclick="showAdminSection('memberships', this)">
+                            💎 Memberships
+                        </button>
+
+                        <button class="admin-link"
+                            onclick="showAdminSection('reviews', this)">
+                            ⭐ Reviews
+                        </button>
+
+                        <button class="admin-link"
+                            onclick="showAdminSection('gallery', this)">
+                            🖼️ Gallery
+                        </button>
+
+                        <button class="admin-link admin-logout"
+                            onclick="logoutAdmin()">
+                            🚪 Logout
+                        </button>
+
+                    </aside>
+
+                    <!-- MAIN CONTENT -->
+                    <main class="admin-content">
+
+                        <!-- OVERVIEW -->
+                        <section id="admin-overview"
+                            class="admin-section active">
+
+                            <h3>Dashboard Overview</h3>
+                            <p>Manage your salon operations from one place.</p>
+
+                            <div class="admin-stats">
+
+                                <div class="admin-stat-card">
+                                    <h6>Total Customers</h6>
+                                    <h2 id="adminCustomerCount">0</h2>
+                                </div>
+
+                                <div class="admin-stat-card">
+                                    <h6>Total Staff</h6>
+                                    <h2 id="adminStaffCount">0</h2>
+                                </div>
+
+                                <div class="admin-stat-card">
+                                    <h6>Total Services</h6>
+                                    <h2 id="adminServiceCount">0</h2>
+                                </div>
+
+                                <div class="admin-stat-card">
+                                    <h6>Total Bookings</h6>
+                                    <h2 id="adminBookingCount">0</h2>
+                                </div>
+
+                                <div class="admin-stat-card">
+                                    <h6>Active Members</h6>
+                                    <h2 id="adminMemberCount">0</h2>
+                                </div>
+
+                                <div class="admin-stat-card">
+                                    <h6>Completed Bookings</h6>
+                                    <h2 id="adminCompletedCount">0</h2>
+                                </div>
+
+                            </div>
+
+                            <h5 class="mt-4">Recent Appointments</h5>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Customer</th>
+                                            <th>Service</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="adminRecentBookings"></tbody>
+                                </table>
+                            </div>
+
+                        </section>
+
+                        <!-- STAFF MANAGEMENT -->
+                        <section id="admin-staff"
+                            class="admin-section">
+
+                            <h3>Staff Management</h3>
+
+                            <form id="staffForm" class="admin-form">
+
+                                <input type="hidden" id="staffEditId">
+
+                                <div class="row">
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Staff Name</label>
+                                        <input type="text" id="staffName"
+                                            class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Specialization</label>
+                                        <input type="text" id="staffSpecialization"
+                                            class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Phone</label>
+                                        <input type="tel" id="staffPhone"
+                                            class="form-control">
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" id="staffEmail"
+                                            class="form-control">
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-dark">
+                                    Save Staff
+                                </button>
+
+                                <button type="button"
+                                    class="btn btn-secondary"
+                                    onclick="resetStaffForm()">
+                                    Clear
+                                </button>
+
+                            </form>
+
+                            <hr>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Specialization</th>
+                                            <th>Phone</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="adminStaffTable"></tbody>
+                                </table>
+                            </div>
+
+                        </section>
+
+                        <!-- SERVICES MANAGEMENT -->
+                        <section id="admin-services"
+                            class="admin-section">
+
+                            <h3>Services Management</h3>
+
+                            <form id="serviceForm" class="admin-form">
+
+                                <input type="hidden" id="serviceEditId">
+
+                                <div class="row">
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Service Name</label>
+                                        <input type="text" id="serviceName"
+                                            class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Category</label>
+                                        <input type="text" id="serviceCategory"
+                                            class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Price</label>
+                                        <input type="number" id="servicePrice"
+                                            class="form-control" min="0" required>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Duration (minutes)</label>
+                                        <input type="number" id="serviceDuration"
+                                            class="form-control" min="1" required>
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <label class="form-label">Description</label>
+                                        <textarea id="serviceDescription"
+                                            class="form-control"></textarea>
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-dark">
+                                    Save Service
+                                </button>
+
+                                <button type="button"
+                                    class="btn btn-secondary"
+                                    onclick="resetServiceForm()">
+                                    Clear
+                                </button>
+
+                            </form>
+
+                            <hr>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Service</th>
+                                            <th>Category</th>
+                                            <th>Price</th>
+                                            <th>Duration</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="adminServicesTable"></tbody>
+                                </table>
+                            </div>
+
+                        </section>
+
+                        <!-- APPOINTMENTS -->
+                        <section id="admin-appointments"
+                            class="admin-section">
+
+                            <h3>Appointment Management</h3>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Customer</th>
+                                            <th>Service</th>
+                                            <th>Stylist</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="adminAppointmentsTable"></tbody>
+                                </table>
+                            </div>
+
+                        </section>
+
+                        <!-- CUSTOMERS -->
+                        <section id="admin-customers"
+                            class="admin-section">
+
+                            <h3>Customer Management</h3>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Membership</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="adminCustomersTable"></tbody>
+                                </table>
+                            </div>
+
+                        </section>
+
+                        <!-- OFFERS -->
+                        <section id="admin-offers"
+                            class="admin-section">
+
+                            <h3>Offers Management</h3>
+
+                            <form id="offerForm" class="admin-form">
+
+                                <input type="hidden" id="offerEditId">
+
+                                <div class="row">
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Offer Name</label>
+                                        <input type="text" id="offerName"
+                                            class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Discount (%)</label>
+                                        <input type="number" id="offerDiscount"
+                                            class="form-control"
+                                            min="1" max="100" required>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Valid Until</label>
+                                        <input type="date" id="offerExpiry"
+                                            class="form-control" required>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Description</label>
+                                        <input type="text" id="offerDescription"
+                                            class="form-control">
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-dark">
+                                    Save Offer
+                                </button>
+
+                                <button type="button"
+                                    class="btn btn-secondary"
+                                    onclick="resetOfferForm()">
+                                    Clear
+                                </button>
+
+                            </form>
+
+                            <hr>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Offer</th>
+                                            <th>Discount</th>
+                                            <th>Expiry</th>
+                                            <th>Description</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="adminOffersTable"></tbody>
+                                </table>
+                            </div>
+
+                        </section>
+
+                        <!-- MEMBERSHIPS -->
+                        <section id="admin-memberships"
+                            class="admin-section">
+
+                            <h3>Membership Management</h3>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Customer Email</th>
+                                            <th>Membership Status</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="adminMembershipsTable"></tbody>
+                                </table>
+                            </div>
+
+                        </section>
+
+                        <!-- REVIEWS -->
+                        <section id="admin-reviews"
+                            class="admin-section">
+
+                            <h3>Reviews Management</h3>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Customer</th>
+                                            <th>Rating</th>
+                                            <th>Review</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="adminReviewsTable"></tbody>
+                                </table>
+                            </div>
+
+                        </section>
+
+                        <!-- GALLERY -->
+                        <section id="admin-gallery"
+                            class="admin-section">
+
+                            <h3>Gallery Management</h3>
+
+                            <form id="galleryForm" class="admin-form">
+
+                                <div class="mb-3">
+                                    <label class="form-label">Image URL</label>
+                                    <input type="url" id="galleryImageUrl"
+                                        class="form-control"
+                                        placeholder="https://example.com/image.jpg"
+                                        required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Image Title</label>
+                                    <input type="text" id="galleryImageTitle"
+                                        class="form-control" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-dark">
+                                    Add Image
+                                </button>
+
+                            </form>
+
+                            <hr>
+
+                            <div id="adminGalleryList"></div>
+
+                        </section>
+
+                    </main>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body></html>
